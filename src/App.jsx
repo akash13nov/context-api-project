@@ -1,63 +1,16 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Products from "./pages/Products";
+import ProductDetails from "./pages/ProductDetails";
 
 const App = () => {
-  const [product, setProduct] = useState([]);
-  const getData = async () => {
-    const response = await axios.get(
-      "https://fakestoreapi.com/products/category/electronics"
-    );
-    setProduct(response.data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
   return (
-    <div className="w-screen h-full bg-blue-500 flex flex-wrap gap-5 p-5">
-      {product.map((elem, idx) => {
-        return (
-          <a
-            key={idx}
-            href=""
-            className="w-[350px] bg-white rounded-2xl overflow-hidden cursor-pointer
-                shadow-lg hover:shadow-2xl transition-shadow duration-300"
-          >
-            <div className="h-[220px] flex items-center justify-center bg-gray-100 p-4">
-              <img
-                src={elem.image}
-                alt={elem.title}
-                className="h-full object-contain hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <div className="p-5">
-              <span className="text-xs uppercase tracking-wide text-blue-600 font-semibold">
-                {elem.category}
-              </span>
-              <h2 className="mt-2 text-lg font-semibold text-gray-800 leading-snug line-clamp-2">
-                {elem.title}
-              </h2>
-              <p className="text-sm text-gray-600 mt-3 line-clamp-3">
-                {elem.description}
-              </p>
-
-              <div className="flex items-center justify-between mt-5">
-                <span className="text-xl font-bold text-gray-900">
-                  ${elem.price}
-                </span>
-
-                <button
-                  className="px-4 py-2 text-sm rounded-lg bg-black text-white
-                   transition-transform duration-150 
-                   hover:scale-105 active:scale-95"
-                >
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-          </a>
-        );
-      })}
-    </div>
+    <Routes>
+      <Route path={"/"} element={<Home />} />
+      <Route path={"/products"} element={<Products />} />
+      <Route path={"/products/:id"} element={<ProductDetails />} />
+    </Routes>
   );
 };
 
