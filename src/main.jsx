@@ -6,9 +6,9 @@ import { BrowserRouter } from "react-router-dom";
 import ProductsContext from "./context/ProductsContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <ProductsContext>
-    <BrowserRouter>
+  <BrowserRouter>
+    <ProductsContext>
       <App />
-    </BrowserRouter>
-  </ProductsContext>
+    </ProductsContext>
+  </BrowserRouter>
 );
