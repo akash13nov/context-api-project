@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import ProductsContext from "./context/ProductsContext.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <BrowserRouter>
+  <BrowserRouter basename="/context-api-project">
     <ProductsContext>
       <App />
     </ProductsContext>
